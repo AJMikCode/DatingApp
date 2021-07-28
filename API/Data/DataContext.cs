@@ -10,5 +10,6 @@ namespace API.Data
         }
 
         public DbSet<AppUser> Users { get; set; }
+        //DBSet allows <AppUser> to become a Databse for App Users of the website.
     }
 }
