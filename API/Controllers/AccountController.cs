@@ -21,6 +21,7 @@ namespace API.Controllers
         }
 
         [HttpPost("register")]
+        // The UserDto is what it expects so it expects to return public string Username and public string token.
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             // The if statement checks if the user exists and if they do it returns a bad request because that menas the usernmae has already been taken
