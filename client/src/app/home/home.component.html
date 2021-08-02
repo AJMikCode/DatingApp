@@ -1,0 +1,25 @@
+<div class="container mt-5">
+        <!-- This is logical, not the register form being shown but the regsiter Ad-->
+    <div *ngIf="!registerButtonScreen" style="text-align: center;">
+        <h1>Find your match</h1>
+        <p class="lead">Come on in to view your matches... all you need to do is sign up!</p>
+        <div class="text-center">
+            <!-- Toggles to the register form screen-->
+            <button class="btn btn-primary mr-2" (click)="registerToggle()">Register</button>
+            <button class="btn btn-info btn-md">Learn more</button>
+        </div>
+    </div>
+
+    <!-- This is the register form screen, so registerFormScreen is true and shown -->
+    <div *ngIf="registerButtonScreen" class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <!-- Parent to Child Communication of Home Component to Register Compoonent ts files. Uses [] and @Input.-->
+                <!-- Child to Parent Communication of Register Component to Home Component ts files. Uses () and @Output. 
+                     Also it Requires a function to be called on in the Parent + Parameter of click event. 
+                    -->
+                <app-register (cancelRegister) = "cancelRegisterMode($event)"></app-register>
+            </div>
+        </div>
+    </div>
+</div>
