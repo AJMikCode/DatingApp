@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
@@ -13,7 +15,7 @@ export class NavComponent implements OnInit {
   // Solution to problems such as AccountService not working may just be to restart visual studio
     // accountService changed to public so the nav component html can read it
       // nav.component.html Can use currentUser$ by calling in Angular "accountService.currentUser$"
-  constructor(public accountService: AccountService) { }
+  constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -23,9 +25,11 @@ export class NavComponent implements OnInit {
       this.accountService.login(this.model).subscribe(response => {
         //returns a response from Observable by using .subscribe() method
         console.log(response);
+        this.router.navigateByUrl("/members")
       }, error => {
         //Same as above by console.logging the arrow function passed in
         console.log(error); 
+        this.toastr.error(error.error);
       });
     }
 
@@ -33,6 +37,7 @@ export class NavComponent implements OnInit {
     {
       //Aspect will be removed later but logging out should return that tha user isn't logged in or false.
       this.accountService.logout();
+      this.router.navigateByUrl("/")
     }
 
     //The getCurrentUser() is replaced by the statement this.currentUser$ = this.accountService.currentUser$; &

@@ -17,6 +17,7 @@ export class AccountService {
   // replaySubject is a special type of observable. Stores however many values you assing it by (), storing 1 as of now.
       // Anytime subscriber subscribes to this observable, emit last value inside it or however many values we assign it to emit.
           // $ in name is convention for observable.
+            // Observable can be observed by other components/clases in the application. 
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
