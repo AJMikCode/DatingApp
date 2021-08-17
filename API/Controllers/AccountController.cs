@@ -44,7 +44,7 @@ namespace API.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            //returns the user added into DB, uses Dto properties and ITokenService to create tokenfor user
+            //returns the user added into DB, uses Dto properties and ITokenService to create token for user
             return new UserDto 
             {
                 Username = user.UserName,

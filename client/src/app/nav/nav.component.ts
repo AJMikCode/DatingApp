@@ -26,11 +26,13 @@ export class NavComponent implements OnInit {
         //returns a response from Observable by using .subscribe() method
         console.log(response);
         this.router.navigateByUrl("/members")
-      }, error => {
-        //Same as above by console.logging the arrow function passed in
-        console.log(error); 
-        this.toastr.error(error.error);
-      });
+      })
+              // Replaced by error handling via errors folder and not-found and test-errors folders within
+      // }, error => {
+      //   //Same as above by console.logging the arrow function passed in
+      //   console.log(error); 
+      //   this.toastr.error(error.error);
+      // });
     }
 
     logout() 
