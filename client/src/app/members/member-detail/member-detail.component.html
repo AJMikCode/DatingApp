@@ -1,1 +1,62 @@
-<p>member-detail works!</p>
+<!-- Checks if the member exists so that there is no error in the console because angular to load without seeing if member. 
+    So no error in console and also better since angular already has the preset value but needs to get full member.
+-->
+<div class="row" *ngIf="member">
+    <div class="col-4">
+        <div class="card">
+            <!-- Uses the member photo or if just signed up shouldnt have one so a preset character profile which should be blank -->
+            <!-- Add inside photoUrl with or operand  || './assets/user.png'  -->
+            <img src="{{member.photoUrl || './assets/user.png' }}" alt="{{member.nickname}}" 
+                class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <!-- Adding attributes of a persons profile including location, Age, Last Active, Member since  -->
+                <div>
+                    <strong>Location:</strong>
+                    <p>{{member.city}}, {{member.country}}</p>
+                </div>
+                <div>
+                    <strong>Age:</strong>
+                    <p>{{member.age}}</p>
+                </div>
+                <!-- Dont worry about weird DateTime format displayed as of now. -->
+                <div>
+                    <strong>Last Active:</strong>
+                    <p>{{member.lastActive}}</p>
+                </div>
+                <div>
+                    <strong>Member Since:</strong>
+                    <p>{{member.created}}</p>
+                </div>
+            </div>
+            <!-- Card footer at bottom of card with functionality to like the user or msg the user -->
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button class="btn btn-primary">Like<i class="fa fa-heart"></i></button>
+                    <button class="btn btn-success">Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <!-- Seen in sharedModule as TabsModule imported from ngx-bootstrap, may be deprecated??? -->
+        <!-- Class has to be after encapsulation already preset. -->
+        <tabset class="member-tabset">
+            <tab heading="About {{member.nickname}}">
+                <h4>Description</h4>
+                <p>{{member.introduction}}</p>
+                <h4>Looking For</h4>
+                <p>{{member.lookingFor}}</p>
+            </tab>
+            <tab heading="Interests">
+                <h4>Interests</h4>
+                <p>{{member.interests}}</p>
+            </tab>
+            <tab heading="Photos">
+                <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+            </tab>
+            <tab heading="Messages">
+                <p>Messages will go here later</p>
+            </tab>
+        </tabset>
+    </div>
+</div>

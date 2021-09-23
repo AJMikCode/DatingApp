@@ -1,0 +1,40 @@
+.card:hover img {
+    transform: scale(1.2, 1.2);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.7;
+}
+
+.card img {
+    transform: scale(1.0, 1.0);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+}
+
+/* Position relative added so the heart, user and msg icon will fit even when zoom in when hovering the user profile */
+.card-img-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+/* Opacity set to 0 when in original state and no hover. */
+.member-icons {
+    position: absolute;
+    bottom: -30%;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    opacity: 0;
+}
+
+/* When hovered shows icons of user, heart, and msg */
+.card-img-wrapper:hover .member-icons {
+    bottom: 0; 
+    opacity: 1;
+}
+
+/* Smoother hover over and when exiting hover of a user */
+.animate {
+    transition: all 0.3s ease-in-out;
+}

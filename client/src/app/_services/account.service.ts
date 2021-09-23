@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { User } from '../_models/user';
 
 // Injectable allows this service to be injected into other components or services in the app.
@@ -12,7 +13,7 @@ import { User } from '../_models/user';
 export class AccountService {
   // Set to something is =, While the : sets something to a type of something
       // Baseurl is the application base can be redirected to users
-  baseUrl = 'https://localhost:5001/api/';
+        baseUrl = environment.apiUrl;
 
   // replaySubject is a special type of observable. Stores however many values you assing it by (), storing 1 as of now.
       // Anytime subscriber subscribes to this observable, emit last value inside it or however many values we assign it to emit.

@@ -19,7 +19,8 @@ const routes: Routes = [
     children :[
       // All Children are covered by the canActivate: [AuthGuard], protects all paths with angular route guard
       {path: 'members', component: MemberListComponent, },
-      {path: 'members/:id', component: MemberDetailComponent},
+      // Changed from members/:id to members/:username so params work inside the member detail component
+      {path: 'members/:username', component: MemberDetailComponent},
       {path: 'lists', component: ListsComponent},
       {path: 'messages', component: MessagesComponent}   
     ]
